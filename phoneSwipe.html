@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>phoneswipe</title>
+  <link rel="stylesheet" href="phoneSwipe.css">
+</head>
+<body>
+  <div class="popup-wrap">
+
+  <div class="popup-top" id="popup-top">
+    <p class="popup-btn" id="popup-btn">服务中</p>
+  </div>
+
+  <div class="popup-box">
+    <div class="car-num-list">
+      <ul class="list-wrap">
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+        <li>
+          <a href="javascript:;">京A.12345</a>
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+
+    <script src="jQuery.js"></script>
+    <script>
+      $('#popup-btn').on('click',function(){
+
+        var bottom = parseInt($('.popup-wrap').css("bottom"));
+
+        if(bottom === 0){
+          $('.popup-wrap').animate({
+            bottom:'-200px'
+          },'fast');
+        }else{
+          $('.popup-wrap').animate({
+            bottom:'0'
+          },'fast');
+        }
+      });
+
+      function load (){
+
+        var startY, y;
+
+        document.getElementById("popup-top").addEventListener('touchstart',touch, false);
+        document.getElementById("popup-top").addEventListener('touchmove',touch, false);
+        document.getElementById("popup-top").addEventListener('touchend',touch, false);
+
+        function touch (event){
+          var event = event || window.event;
+          var touch=event.touches[0];
+
+          switch(event.type){
+
+            case "touchstart":
+              startY = touch.pageY;
+              break;
+            case "touchend":
+              break;
+            case "touchmove":
+              event.preventDefault();
+              y = touch.pageY - startY;
+              if(y <= 0){
+                $('.popup-wrap').animate({
+                  bottom:'0'
+                },'fast');
+              }else{
+                $('.popup-wrap').animate({
+                  bottom:'-200px'
+                },'fast');
+              }
+              break;
+          }
+
+        }
+      }
+      window.addEventListener('load',load, false);
+    </script>
+</body>
+</html>
